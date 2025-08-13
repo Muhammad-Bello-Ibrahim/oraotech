@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Code, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -41,11 +41,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="relative">
-              <Zap className="h-8 w-8 text-neon" />
-              <Code className="h-4 w-4 text-accent absolute -bottom-1 -right-1" />
-            </div>
+          <div className="flex items-center">
             <span className="text-xl font-bold text-foreground">
               Orao Technologies
             </span>

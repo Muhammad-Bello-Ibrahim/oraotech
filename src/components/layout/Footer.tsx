@@ -1,4 +1,4 @@
-import { Code, Zap, Mail, Phone, MapPin, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const scrollToSection = (href: string) => {
@@ -23,10 +23,6 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-2 mb-6">
-                <div className="relative">
-                  <Zap className="h-8 w-8 text-neon" />
-                  <Code className="h-4 w-4 text-accent absolute -bottom-1 -right-1" />
-                </div>
                 <span className="text-2xl font-bold">Orao Technologies</span>
               </div>
               
@@ -60,7 +56,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
               <ul className="space-y-3">
-                {{
+                {[
                   { name: 'Home', href: '#home' },
                   { name: 'About Us', href: '#about' },
                   { name: 'Services', href: '#services' },
@@ -68,7 +64,7 @@ const Footer = () => {
                   { name: 'Team', href: '#team' },
                   { name: 'SIWES', href: '#siwes' },
                   { name: 'Contact', href: '#contact' }
-                }.map((link) => (
+                ].map((link) => (
                   <li key={link.name}>
                     <button
                       onClick={() => scrollToSection(link.href)}
@@ -85,7 +81,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-6">Our Services</h3>
               <ul className="space-y-3">
-                {{
+                {[
                   'Software Development',
                   'Blockchain Solutions',
                   'Digital Health Systems',
@@ -94,7 +90,7 @@ const Footer = () => {
                   'Training & Capacity Building',
                   'E-commerce Solutions',
                   'Enterprise Solutions'
-                }.map((service) => (
+                ].map((service) => (
                   <li key={service} className="text-white/80">
                     {service}
                   </li>
@@ -110,12 +106,12 @@ const Footer = () => {
               <div className="flex items-center space-x-6">
                 <span className="text-white/80 font-medium">Follow Us:</span>
                 <div className="flex space-x-4">
-                  {{
+                  {[
                     { icon: Twitter, href: 'https://www.twitter.com/devmufteem' },
                     { icon: Linkedin, href: 'https://www.linkedin.com/oraoacademy' },
                     { icon: Github, href: 'https://www.github.com/oraoacademy' },
                     { icon: Facebook, href: 'https://www.facebook.com/oraoacademy' }
-                  }.map((social, index) => (
+                  ].map((social, index) => (
                     <a
                       key={index}
                       href={social.href}
