@@ -1,4 +1,4 @@
-import { Code, Zap, Mail, Phone, MapPin, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const scrollToSection = (href: string) => {
@@ -23,10 +23,6 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-2 mb-6">
-                <div className="relative">
-                  <Zap className="h-8 w-8 text-neon" />
-                  <Code className="h-4 w-4 text-accent absolute -bottom-1 -right-1" />
-                </div>
                 <span className="text-2xl font-bold">Orao Technologies</span>
               </div>
               

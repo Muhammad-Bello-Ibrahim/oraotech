@@ -67,7 +67,7 @@ const Siwes = () => {
             <div className="text-center">
               <Button
                 variant="hero"
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.location.href = '/siwes'}
               >
                 Apply for SIWES/Internship
               </Button>
