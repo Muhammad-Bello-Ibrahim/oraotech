@@ -60,14 +60,15 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
               <ul className="space-y-3">
-                {[
+                {{
                   { name: 'Home', href: '#home' },
                   { name: 'About Us', href: '#about' },
                   { name: 'Services', href: '#services' },
                   { name: 'Portfolio', href: '#portfolio' },
                   { name: 'Team', href: '#team' },
-                  { name: 'Contact', href: '#contact' },
-                ].map((link) => (
+                  { name: 'SIWES', href: '#siwes' },
+                  { name: 'Contact', href: '#contact' }
+                }.map((link) => (
                   <li key={link.name}>
                     <button
                       onClick={() => scrollToSection(link.href)}
@@ -84,14 +85,16 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-6">Our Services</h3>
               <ul className="space-y-3">
-                {[
+                {{
                   'Software Development',
                   'Blockchain Solutions',
                   'Digital Health Systems',
                   'Educational Technology',
+                  'School Management Systems',
+                  'Training & Capacity Building',
                   'E-commerce Solutions',
-                  'Enterprise Solutions',
-                ].map((service) => (
+                  'Enterprise Solutions'
+                }.map((service) => (
                   <li key={service} className="text-white/80">
                     {service}
                   </li>
@@ -107,12 +110,12 @@ const Footer = () => {
               <div className="flex items-center space-x-6">
                 <span className="text-white/80 font-medium">Follow Us:</span>
                 <div className="flex space-x-4">
-                  {[
-                    { icon: Twitter, href: '#' },
-                    { icon: Linkedin, href: '#' },
-                    { icon: Github, href: '#' },
-                    { icon: Facebook, href: '#' },
-                  ].map((social, index) => (
+                  {{
+                    { icon: Twitter, href: 'https://www.twitter.com/devmufteem' },
+                    { icon: Linkedin, href: 'https://www.linkedin.com/oraoacademy' },
+                    { icon: Github, href: 'https://www.github.com/oraoacademy' },
+                    { icon: Facebook, href: 'https://www.facebook.com/oraoacademy' }
+                  }.map((social, index) => (
                     <a
                       key={index}
                       href={social.href}

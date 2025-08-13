@@ -31,6 +31,20 @@ const Services = () => {
       color: 'from-orange-500 to-red-500',
     },
     {
+      icon: GraduationCap,
+      title: 'School Management Systems',
+      description: 'End-to-end platforms for primary, secondary, and tertiary institutions.',
+      features: ['Admissions & Enrollment', 'Attendance & Timetables', 'Results & Transcripts', 'Fees, Payroll & Finance'],
+      color: 'from-sky-500 to-blue-600',
+    },
+    {
+      icon: Users,
+      title: 'Training & Capacity Building',
+      description: 'Practical training from basic IT to programming, AI, Blockchain and more.',
+      features: ['Basic IT & Productivity', 'Frontend/Backend Programming', 'AI/ML Fundamentals', 'Blockchain & Smart Contracts'],
+      color: 'from-emerald-500 to-teal-500',
+    },
+    {
       icon: ShoppingCart,
       title: 'E-commerce Solutions',
       description: 'Complete online shopping platforms with advanced features and seamless user experiences.',

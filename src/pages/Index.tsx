@@ -6,6 +6,8 @@ import Services from '@/components/sections/Services';
 import Portfolio from '@/components/sections/Portfolio';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/layout/Footer';
+import Team from '@/components/sections/Team';
+import Siwes from '@/components/sections/Siwes';
 
 const Index = () => {
   useEffect(() => {
@@ -26,6 +28,8 @@ const Index = () => {
         <About />
         <Services />
         <Portfolio />
+        <Team />
+        <Siwes />
         <Contact />
       </main>
       <Footer />
