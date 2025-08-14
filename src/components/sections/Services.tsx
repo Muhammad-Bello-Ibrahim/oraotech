@@ -1,6 +1,9 @@
-import { Code, Blocks, Heart, GraduationCap, ShoppingCart, Users } from 'lucide-react';
+import { Code, Blocks, Heart, GraduationCap, ShoppingCart, Users, CreditCard, FileText, UserCheck } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
+  const navigate = useNavigate();
+  
   const services = [
     {
       icon: Code,
@@ -8,6 +11,7 @@ const Services = () => {
       description: 'Custom software solutions built with cutting-edge technologies to drive your business forward.',
       features: ['Web Applications', 'Mobile Apps', 'Desktop Software', 'API Development'],
       color: 'from-blue-500 to-cyan-500',
+      detailPage: null,
     },
     {
       icon: Blocks,
@@ -15,6 +19,7 @@ const Services = () => {
       description: 'Decentralized applications and smart contracts that revolutionize how businesses operate.',
       features: ['Smart Contracts', 'DeFi Platforms', 'NFT Marketplaces', 'Crypto Wallets'],
       color: 'from-purple-500 to-pink-500',
+      detailPage: null,
     },
     {
       icon: Heart,
@@ -22,6 +27,7 @@ const Services = () => {
       description: 'Healthcare technology solutions that improve patient outcomes and streamline operations.',
       features: ['Health Records', 'Telemedicine', 'Medical Devices', 'Patient Portals'],
       color: 'from-green-500 to-emerald-500',
+      detailPage: null,
     },
     {
       icon: GraduationCap,
@@ -29,6 +35,7 @@ const Services = () => {
       description: 'Learning platforms and educational tools that enhance the teaching and learning experience.',
       features: ['LMS Platforms', 'E-Learning', 'Assessment Tools', 'Student Engagement'],
       color: 'from-orange-500 to-red-500',
+      detailPage: null,
     },
     {
       icon: GraduationCap,
@@ -36,6 +43,7 @@ const Services = () => {
       description: 'End-to-end platforms for primary, secondary, and tertiary institutions.',
       features: ['Admissions & Enrollment', 'Attendance & Timetables', 'Results & Transcripts', 'Fees, Payroll & Finance'],
       color: 'from-sky-500 to-blue-600',
+      detailPage: null,
     },
     {
       icon: Users,
@@ -43,6 +51,7 @@ const Services = () => {
       description: 'Practical training from basic IT to programming, AI, Blockchain and more.',
       features: ['Basic IT & Productivity', 'Frontend/Backend Programming', 'AI/ML Fundamentals', 'Blockchain & Smart Contracts'],
       color: 'from-emerald-500 to-teal-500',
+      detailPage: null,
     },
     {
       icon: ShoppingCart,
@@ -50,6 +59,7 @@ const Services = () => {
       description: 'Complete online shopping platforms with advanced features and seamless user experiences.',
       features: ['Online Stores', 'Payment Systems', 'Inventory Management', 'Analytics'],
       color: 'from-indigo-500 to-blue-500',
+      detailPage: null,
     },
     {
       icon: Users,
@@ -57,6 +67,31 @@ const Services = () => {
       description: 'Scalable business solutions that optimize workflows and enhance productivity.',
       features: ['CRM Systems', 'ERP Solutions', 'Workflow Automation', 'Data Analytics'],
       color: 'from-teal-500 to-cyan-500',
+      detailPage: null,
+    },
+    {
+      icon: UserCheck,
+      title: 'NIMC Enrollment',
+      description: 'National Identity Management Commission enrollment services with expert guidance and support.',
+      features: ['New Enrollment', 'NIN Retrieval', 'Card Replacement', 'Data Modification'],
+      color: 'from-green-600 to-emerald-600',
+      detailPage: 'nimc-enrollment',
+    },
+    {
+      icon: CreditCard,
+      title: 'BVN Enrollment',
+      description: 'Bank Verification Number enrollment and update services for seamless banking operations.',
+      features: ['New BVN Registration', 'BVN Update', 'Biometric Capture', 'Status Verification'],
+      color: 'from-blue-600 to-indigo-600',
+      detailPage: 'bvn-enrollment',
+    },
+    {
+      icon: FileText,
+      title: 'Passport Application Assistance',
+      description: 'Complete passport application support services from documentation to submission.',
+      features: ['Document Preparation', 'Application Submission', 'Status Tracking', 'Renewal Services'],
+      color: 'from-purple-600 to-violet-600',
+      detailPage: 'passport-application',
     },
   ];
 
@@ -91,6 +126,7 @@ const Services = () => {
             <div
               key={index}
               className="group relative glass p-8 rounded-2xl hover:shadow-card transition-all duration-500 hover:scale-105 cursor-pointer"
+              onClick={() => service.detailPage && navigate(`/services/${service.detailPage}`)}
             >
               {/* Gradient Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`} />

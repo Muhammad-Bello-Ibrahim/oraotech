@@ -1,14 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ExternalLink, Github, Filter, Users, Heart, ShoppingCart, GraduationCap, Blocks, Building } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const navigate = useNavigate();
 
   const categories = ['All', 'Software', 'Blockchain', 'HealthTech', 'EdTech', 'Ecommerce', 'EdServices'];
 
   const projects = [
     {
+      id: 'connectrix',
       title: 'Connectrix',
       category: 'Software',
       description: 'Comprehensive dues collection, student engagement, and club management system specifically designed for higher institutions like GSU.',
@@ -19,6 +22,7 @@ const Portfolio = () => {
       audience: 'Higher Education Institutions',
     },
     {
+      id: 'mesafe',
       title: 'meSafe',
       category: 'HealthTech',
       description: 'Digital Health Record Management System with biometric access control and secure cloud storage for patient data.',
@@ -29,6 +33,7 @@ const Portfolio = () => {
       audience: 'Healthcare Providers & Patients',
     },
     {
+      id: 'shopmon',
       title: 'Shopmon',
       category: 'Ecommerce',
       description: 'Location-based buying and selling platform that connects local buyers with sellers for products and services.',
@@ -39,6 +44,7 @@ const Portfolio = () => {
       audience: 'Local Businesses & Consumers',
     },
     {
+      id: 'elevatex',
       title: 'Elevatex',
       category: 'Blockchain',
       description: 'Referral-based financial system with pack rewards and blockchain-powered transparency for network marketing.',
@@ -49,6 +55,7 @@ const Portfolio = () => {
       audience: 'Network Marketing Companies',
     },
     {
+      id: 'bigtailor',
       title: 'BigTailor',
       category: 'Ecommerce',
       description: 'Revolutionary clothing e-commerce platform featuring virtual fitting technology for both tailors and customers.',
@@ -59,6 +66,7 @@ const Portfolio = () => {
       audience: 'Fashion Industry & Consumers',
     },
     {
+      id: 'lectrocloud',
       title: 'Lectrocloud',
       category: 'EdTech',
       description: 'Cloud-based student engagement platform designed specifically for the University of Maiduguri and similar institutions.',
@@ -69,6 +77,7 @@ const Portfolio = () => {
       audience: 'University of Maiduguri',
     },
     {
+      id: 'libolt',
       title: 'Libolt',
       category: 'EdServices',
       description: 'JAMB practice system with intelligent subject combination advice to help students optimize their exam performance.',
@@ -79,6 +88,7 @@ const Portfolio = () => {
       audience: 'JAMB Candidates & Students',
     },
     {
+      id: 'arks-xpress',
       title: 'Arks Xpress',
       category: 'Ecommerce',
       description: 'Comprehensive e-commerce and payment gateway solution tailored for the Nigerian market with local payment methods.',
@@ -89,6 +99,7 @@ const Portfolio = () => {
       audience: 'Nigerian Businesses',
     },
     {
+      id: 'vrs-data',
       title: 'VRS Data',
       category: 'Software',
       description: 'VTU (Virtual Top-Up) platform for airtime, data, and utility payments with automated processing and real-time transactions.',
@@ -201,7 +212,12 @@ const Portfolio = () => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-3">
-                  <Button variant="outline" size="sm" className="flex-1 group">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex-1 group"
+                    onClick={() => navigate(`/projects/${project.id}`)}
+                  >
                     <ExternalLink className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     View Details
                   </Button>
