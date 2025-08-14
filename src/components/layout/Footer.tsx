@@ -39,11 +39,15 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-accent" />
-                  <span className="text-white/80">hello@orao.tech</span>
+                  <span className="text-white/80">info@oraotechnologies.tech</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-accent" />
-                  <span className="text-white/80">+234 (0) 123 456 7890</span>
+                  <span className="text-white/80">+234 (90) 325 090 94</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Phone className="h-5 w-5 text-accent" />
+                  <span className="text-white/80">+234 (70) 606 624 05</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-accent" />
