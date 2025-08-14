@@ -1,15 +1,18 @@
 import { Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Team = () => {
+  const navigate = useNavigate();
+  
   const members = [
-    { name: 'Almustapha Ibrahim Gurama', role: 'President' },
-    { name: 'Muhammad Bello Ibrahim MCS', role: 'CEO' },
-    { name: 'Engr. Andurrahman Grema', role: 'CTO' },
-    { name: 'Abbas Abdullahi', role: 'Developer Lead - Frontend' },
-    { name: 'Engr. Esin Ridollah Abdulrazaq', role: 'Software Engineer' },
-    { name: 'Abdullahi Lawan', role: 'UI/UX Designer' },
-    { name: 'Zayad Nuhu Jidda', role: 'UI/UX Designer' },
-    { name: 'Isah Muhammad Jalo', role: 'Human Resource Manager' },
+    { id: 'almustapha-ibrahim-gurama', name: 'Almustapha Ibrahim Gurama', role: 'President' },
+    { id: 'muhammad-bello-ibrahim', name: 'Muhammad Bello Ibrahim MCS', role: 'CEO' },
+    { id: 'andurrahman-grema', name: 'Engr. Andurrahman Grema', role: 'CTO' },
+    { id: 'abbas-abdullahi', name: 'Abbas Abdullahi', role: 'Developer Lead - Frontend' },
+    { id: 'esin-ridollah-abdulrazaq', name: 'Engr. Esin Ridollah Abdulrazaq', role: 'Software Engineer' },
+    { id: 'abdullahi-lawan', name: 'Abdullahi Lawan', role: 'UI/UX Designer' },
+    { id: 'zayad-nuhu-jidda', name: 'Zayad Nuhu Jidda', role: 'UI/UX Designer' },
+    { id: 'isah-muhammad-jalo', name: 'Isah Muhammad Jalo', role: 'Human Resource Manager' },
   ];
 
   const getInitials = (fullName: string) => {
@@ -45,7 +48,11 @@ const Team = () => {
         {/* Team Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {members.map((member, idx) => (
-            <div key={idx} className="group glass p-6 rounded-2xl hover:shadow-card transition-all duration-500 hover:scale-105">
+            <div 
+              key={idx} 
+              className="group glass p-6 rounded-2xl hover:shadow-card transition-all duration-500 hover:scale-105 cursor-pointer"
+              onClick={() => navigate(`/team/${member.id}`)}
+            >
               <div className="flex flex-col items-center text-center">
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center text-white text-2xl font-bold mb-4 group-hover:scale-110 transition-transform duration-500">
                   {getInitials(member.name)}
