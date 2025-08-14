@@ -93,6 +93,14 @@ const Services = () => {
       color: 'from-purple-600 to-violet-600',
       detailPage: 'passport-application',
     },
+    {
+      icon: FileText,
+      title: 'CAC Registration',
+      description: 'Corporate Affairs Commission business registration and incorporation services.',
+      features: ['Business Name Registration', 'Company Incorporation', 'CAC Search', 'Annual Returns'],
+      color: 'from-orange-600 to-red-600',
+      detailPage: 'cac-registration',
+    },
   ];
 
   return (

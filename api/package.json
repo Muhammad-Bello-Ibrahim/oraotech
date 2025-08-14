@@ -1,21 +1,12 @@
 {
-  "name": "oraotech-api",
+  "name": "oraotech-serverless-api",
   "version": "1.0.0",
-  "description": "Backend API for Orao Technologies website",
-  "main": "server.js",
+  "description": "Serverless API functions for Orao Technologies website",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "vercel dev"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express-validator": "^7.0.1",
-    "mongoose": "^7.6.3",
     "nodemailer": "^6.9.7"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
   }
 }
