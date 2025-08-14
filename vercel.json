@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/package.json",
+      "src": "api/*.js",
       "use": "@vercel/node"
     },
     {
@@ -15,8 +15,16 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/server.js"
+      "src": "/api/health",
+      "dest": "/api/health.js"
+    },
+    {
+      "src": "/api/contact",
+      "dest": "/api/contact.js"
+    },
+    {
+      "src": "/api/siwes",
+      "dest": "/api/siwes.js"
     },
     {
       "src": "/assets/.*\\.js$",
