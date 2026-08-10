@@ -1,4 +1,20 @@
-import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Facebook } from 'lucide-react';
+
+const links = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Services', href: '#services' },
+  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'Team', href: '#team' },
+  { name: 'SIWES', href: '#siwes' },
+  { name: 'Contact', href: '#contact' },
+];
+
+const socials = [
+  { icon: Linkedin, href: 'https://www.linkedin.com/oraoacademy', label: 'LinkedIn' },
+  { icon: Github, href: 'https://www.github.com/oraoacademy', label: 'GitHub' },
+  { icon: Facebook, href: 'https://www.facebook.com/oraoacademy', label: 'Facebook' },
+];
 
 const Footer = () => {
   const scrollToSection = (href: string) => {
@@ -9,162 +25,59 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-neon/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative z-10">
-        {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center space-x-2 mb-6">
-                <span className="text-2xl font-bold">Orao Technologies</span>
-              </div>
-              
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-neon mb-2">Think Bold, Build Smart</h3>
-                <p className="text-white/80 leading-relaxed max-w-md">
-                  We're a forward-thinking tech company specializing in software development, 
-                  blockchain solutions, digital health systems, and educational technology 
-                  that transforms industries and drives innovation.
-                </p>
-              </div>
-
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-accent" />
-                  <span className="text-white/80">info@oraotechnologies.tech</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-accent" />
-                  <span className="text-white/80">+234 (90) 325 090 94</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-accent" />
-                  <span className="text-white/80">+234 (70) 606 624 05</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-accent" />
-                  <span className="text-white/80">Lagos, Nigeria</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
-              <ul className="space-y-3">
-                {[
-                  { name: 'Home', href: '#home' },
-                  { name: 'About Us', href: '#about' },
-                  { name: 'Services', href: '#services' },
-                  { name: 'Portfolio', href: '#portfolio' },
-                  { name: 'Team', href: '#team' },
-                  { name: 'SIWES', href: '#siwes' },
-                  { name: 'Contact', href: '#contact' }
-                ].map((link) => (
-                  <li key={link.name}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-white/80 hover:text-accent transition-colors"
-                    >
-                      {link.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Our Services</h3>
-              <ul className="space-y-3">
-                {[
-                  'Software Development',
-                  'Blockchain Solutions',
-                  'Digital Health Systems',
-                  'Educational Technology',
-                  'School Management Systems',
-                  'Training & Capacity Building',
-                  'E-commerce Solutions',
-                  'Enterprise Solutions'
-                ].map((service) => (
-                  <li key={service} className="text-white/80">
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Social Media & Newsletter */}
-          <div className="border-t border-white/20 mt-12 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-              {/* Social Media */}
-              <div className="flex items-center space-x-6">
-                <span className="text-white/80 font-medium">Follow Us:</span>
-                <div className="flex space-x-4">
-                  {[
-                    { icon: Twitter, href: 'https://www.twitter.com/devmufteem' },
-                    { icon: Linkedin, href: 'https://www.linkedin.com/oraoacademy' },
-                    { icon: Github, href: 'https://www.github.com/oraoacademy' },
-                    { icon: Facebook, href: 'https://www.facebook.com/oraoacademy' }
-                  ].map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent hover:scale-110 transition-all duration-300"
-                    >
-                      <social.icon className="h-5 w-5" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div className="flex items-center space-x-4">
-                <span className="text-white/80 font-medium">Stay Updated:</span>
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="px-4 py-2 bg-white/10 border border-white/20 rounded-l-lg focus:outline-none focus:border-accent text-white placeholder-white/60"
-                  />
-                  <button className="px-6 py-2 bg-accent text-primary font-semibold rounded-r-lg hover:bg-accent-light transition-colors">
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </div>
+    <footer className="border-t border-border bg-primary text-primary-foreground">
+      <div className="mx-auto grid w-full max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
+        <div className="space-y-5">
+          <h2 className="text-xl font-semibold">Orao Technologies</h2>
+          <p className="max-w-md text-sm leading-relaxed text-primary-foreground/80">
+            We design and build modern software, digital infrastructure, and training programs for organizations that want measurable results.
+          </p>
+          <div className="space-y-2 text-sm text-primary-foreground/80">
+            <p className="flex items-center gap-2"><Mail className="h-4 w-4" />info@oraotechnologies.tech</p>
+            <p className="flex items-center gap-2"><Phone className="h-4 w-4" />+234 (90) 325 090 94</p>
+            <p className="flex items-center gap-2"><MapPin className="h-4 w-4" />Lagos, Nigeria</p>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p className="text-white/60 text-sm">
-                © {new Date().getFullYear()} Orao Technologies. All rights reserved.
-              </p>
-              <div className="flex space-x-6 text-sm">
-                <a href="#" className="text-white/60 hover:text-accent transition-colors">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-white/60 hover:text-accent transition-colors">
-                  Terms of Service
-                </a>
-                <a href="#" className="text-white/60 hover:text-accent transition-colors">
-                  Cookie Policy
-                </a>
-              </div>
-            </div>
+        <div>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground/70">Navigate</h3>
+          <ul className="space-y-2">
+            {links.map((link) => (
+              <li key={link.name}>
+                <button
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-sm text-primary-foreground/85 transition-colors hover:text-accent"
+                >
+                  {link.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground/70">Connect</h3>
+          <div className="flex gap-2">
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-primary-foreground/25 text-primary-foreground/85 transition-colors hover:border-accent hover:text-accent"
+              >
+                <social.icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
+        </div>
+      </div>
+
+      <div className="border-t border-primary-foreground/15">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-primary-foreground/65 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>© {new Date().getFullYear()} Orao Technologies. All rights reserved.</p>
+          <p>Think Bold, Build Smart.</p>
         </div>
       </div>
     </footer>

@@ -3,76 +3,39 @@ import { Button } from '@/components/ui/button';
 
 const Siwes = () => {
   const perks = [
-    { title: 'Structured Mentorship', desc: 'Get paired with experienced engineers and weekly check-ins.', icon: Users },
-    { title: 'Hands-on Projects', desc: 'Work on real products across frontend, backend, AI and blockchain.', icon: BadgeCheck },
-    { title: 'Certification', desc: 'Receive completion certificates and recommendation letters.', icon: School },
-  ];
-
-  const tracks = [
-    'Basic IT & Productivity Tools',
-    'Frontend Development (React, Tailwind)',
-    'Backend Development (Node.js, APIs)',
-    'AI/ML Fundamentals (Python, Models)',
-    'Blockchain & Smart Contracts (Solidity, Web3)',
+    { title: 'Structured mentorship', desc: 'Weekly guidance from engineers working on real client solutions.', icon: Users },
+    { title: 'Hands-on delivery', desc: 'Participate in practical tasks across frontend, backend, and AI tracks.', icon: BadgeCheck },
+    { title: 'Certification support', desc: 'Earn verifiable completion recognition for your internship period.', icon: School },
   ];
 
   return (
-    <section id="siwes" className="py-24 bg-background relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-6">
-            <School className="h-4 w-4 text-accent" />
-            <span className="text-sm font-medium text-foreground">SIWES & Internships</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Learn by <span className="text-accent">Doing</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            We accept SIWES and internship students, providing a dedicated training section to build practical skills.
+    <section id="siwes" className="bg-muted/35 py-24">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl space-y-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">SIWES & Internship</p>
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Learn in a professional product environment.</h2>
+          <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Our SIWES pathway helps students gain practical delivery experience with modern engineering workflows.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-          {/* Perks */}
-          <div className="space-y-6">
-            {perks.map((perk, idx) => (
-              <div key={idx} className="glass p-6 rounded-xl flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <perk.icon className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <h4 className="text-foreground font-semibold">{perk.title}</h4>
-                  <p className="text-muted-foreground text-sm">{perk.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {perks.map((perk) => (
+            <article key={perk.title} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <perk.icon className="mb-4 h-5 w-5 text-primary" />
+              <h3 className="text-lg font-semibold text-foreground">{perk.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{perk.desc}</p>
+            </article>
+          ))}
+        </div>
 
-          {/* Tracks */}
-          <div className="lg:col-span-2 glass p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold text-foreground mb-4">Training Tracks</h3>
-            <p className="text-muted-foreground mb-6">Our programs span fundamentals to advanced topics:</p>
-            <div className="flex flex-wrap gap-2 mb-8">
-              {tracks.map((t, i) => (
-                <span key={i} className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-md">{t}</span>
-              ))}
-            </div>
-            <div className="text-center">
-              <Button
-                variant="hero"
-                onClick={() => window.location.href = '/siwes'}
-              >
-                Apply for SIWES/Internship
-              </Button>
-            </div>
-          </div>
+        <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Training tracks include basic IT, frontend engineering, backend development, AI/ML fundamentals, and blockchain concepts.
+          </p>
+          <Button className="mt-5" onClick={() => { window.location.href = '/siwes'; }}>
+            Apply for SIWES
+          </Button>
         </div>
       </div>
     </section>
