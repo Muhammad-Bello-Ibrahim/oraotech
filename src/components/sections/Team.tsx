@@ -1,52 +1,37 @@
 import { Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+const members = [
+  { id: 'almustapha-ibrahim-gurama', name: 'Almustapha Ibrahim Gurama', role: 'President' },
+  { id: 'muhammad-bello-ibrahim', name: 'Muhammad Bello Ibrahim MCS', role: 'Chief Executive Officer' },
+  { id: 'andurrahman-grema', name: 'Engr. Andurrahman Grema', role: 'Chief Technology Officer' },
+  { id: 'abbas-abdullahi', name: 'Abbas Abdullahi', role: 'Frontend Lead' },
+];
+
 const Team = () => {
   const navigate = useNavigate();
 
-  const members = [
-    { id: 'almustapha-ibrahim-gurama', name: 'Almustapha Ibrahim Gurama', role: 'President' },
-    { id: 'muhammad-bello-ibrahim', name: 'Muhammad Bello Ibrahim MCS', role: 'CEO' },
-    { id: 'andurrahman-grema', name: 'Engr. Andurrahman Grema', role: 'CTO' },
-    { id: 'abbas-abdullahi', name: 'Abbas Abdullahi', role: 'Developer Lead - Frontend' },
-    { id: 'esin-ridollah-abdulrazaq', name: 'Engr. Esin Ridollah Abdulrazaq', role: 'Software Engineer' },
-    { id: 'abdullahi-lawan', name: 'Abdullahi Lawan', role: 'UI/UX Designer' },
-    { id: 'zayad-nuhu-jidda', name: 'Zayad Nuhu Jidda', role: 'UI/UX Designer' },
-    { id: 'isah-muhammad-jalo', name: 'Isah Muhammad Jalo', role: 'Human Resource Manager' },
-  ];
-
-  const getInitials = (fullName: string) => {
-    const parts = fullName.trim().split(/\s+/);
-    const first = parts[0]?.[0] ?? '';
-    const last = parts[parts.length - 1]?.[0] ?? '';
-    return (first + last).toUpperCase();
-  };
-
   return (
-    <section id="team" className="bg-muted/35 py-24">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl space-y-5">
+    <section id="team" className="bg-muted/40 py-20">
+      <div className="section-shell">
+        <div className="max-w-3xl space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Team</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">People behind the work.</h2>
-          <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-            A multidisciplinary team of builders, engineers, and designers delivering thoughtful digital products.
-          </p>
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">People leading delivery and innovation.</h2>
         </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {members.map((member) => (
             <button
               key={member.id}
-              type="button"
-              className="rounded-2xl border border-border bg-card p-6 text-left shadow-soft transition-smooth hover:border-primary/35"
               onClick={() => navigate(`/team/${member.id}`)}
+              className="rounded-2xl border border-border bg-card p-5 text-left shadow-soft transition-smooth hover:border-primary/35"
             >
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
-                {getInitials(member.name)}
+              <div className="image-placeholder min-h-[160px]" aria-label={`${member.name} profile placeholder`}>
+                <span className="text-xs">Professional photo placeholder</span>
               </div>
-              <h3 className="mt-4 text-base font-semibold text-foreground">{member.name}</h3>
+              <h3 className="mt-4 text-base font-semibold">{member.name}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{member.role}</p>
-              <Users className="mt-4 h-4 w-4 text-accent" />
+              <Users className="mt-4 h-4 w-4 text-primary" />
             </button>
           ))}
         </div>

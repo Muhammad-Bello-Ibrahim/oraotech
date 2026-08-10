@@ -1,406 +1,119 @@
 import { useState } from 'react';
-import { ArrowLeft, School, Users, BadgeCheck, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { ArrowRight, CalendarClock, CheckCircle2, Users } from 'lucide-react';
+import Navigation from '@/components/layout/Navigation';
+import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+
+const faqs = [
+  { q: 'Who can apply?', a: 'SIWES students and early-career learners in relevant technical disciplines.' },
+  { q: 'How long is the program?', a: 'Tracks run between 3 and 12 months depending on institution requirements.' },
+  { q: 'Is this remote or onsite?', a: 'Hybrid options are available based on role, location, and project needs.' },
+];
+
+const timeline = ['Application review', 'Interview + track matching', 'Onboarding and mentorship pairing', 'Project participation and performance review'];
 
 const SiwesPage = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    university: '',
-    course: '',
-    level: '',
-    duration: '',
-    track: '',
-    motivation: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', track: '', motivation: '' });
 
-  const tracks = [
-    { value: 'basic-it', label: 'Basic IT & Productivity Tools' },
-    { value: 'frontend', label: 'Frontend Development (React, Tailwind)' },
-    { value: 'backend', label: 'Backend Development (Node.js, APIs)' },
-    { value: 'ai-ml', label: 'AI/ML Fundamentals (Python, Models)' },
-    { value: 'blockchain', label: 'Blockchain & Smart Contracts (Solidity, Web3)' }
-  ];
-
-  const durations = [
-    { value: '3-months', label: '3 Months' },
-    { value: '6-months', label: '6 Months' },
-    { value: '12-months', label: '12 Months' }
-  ];
-
-  const levels = [
-    { value: '100', label: '100 Level' },
-    { value: '200', label: '200 Level' },
-    { value: '300', label: '300 Level' },
-    { value: '400', label: '400 Level' },
-    { value: '500', label: '500 Level' },
-    { value: 'graduate', label: 'Graduate' }
-  ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const submit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/siwes', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const result = await response.json();
+      if (!result.success) throw new Error(result.message);
 
-      if (result.success) {
-        toast({
-          title: "Application Submitted Successfully!",
-          description: result.message,
-        });
-        
-        // Reset form
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          university: '',
-          course: '',
-          level: '',
-          duration: '',
-          track: '',
-          motivation: ''
-        });
-      } else {
-        toast({
-          title: "Submission Failed",
-          description: result.message || "Please check your input and try again.",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      toast({
-        title: "Network Error",
-        description: "Unable to submit application. Please check your connection and try again.",
-        variant: "destructive",
-      });
+      toast({ title: 'Application submitted', description: result.message });
+      setFormData({ name: '', email: '', track: '', motivation: '' });
+    } catch {
+      toast({ title: 'Unable to submit', description: 'Please try again shortly.', variant: 'destructive' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const goBack = () => {
-    window.history.back();
-  };
-
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b border-border/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" onClick={goBack}>
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">SIWES Application</h1>
-              <p className="text-muted-foreground">Student Industrial Work Experience Scheme</p>
+      <Navigation />
+      <main className="pt-20">
+        <section className="py-16">
+          <div className="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+            <div className="space-y-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">SIWES at Orao</p>
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Build real-world skills in a production environment.</h1>
+              <p className="text-base text-muted-foreground sm:text-lg">Join a structured program focused on mentorship, practical delivery, and measurable career growth.</p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">50+ alumni supported</div>
+                <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">4 learning tracks available</div>
+              </div>
+            </div>
+            <div className="image-placeholder min-h-[320px] p-8" aria-label="SIWES overview image placeholder">
+              <p>Insert SIWES cohort/program image here</p>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Program Information */}
-          <div className="lg:col-span-1 space-y-8">
-            <div className="glass p-6 rounded-2xl">
-              <div className="flex items-center space-x-3 mb-4">
-                <School className="h-6 w-6 text-accent" />
-                <h2 className="text-xl font-bold text-foreground">About SIWES Program</h2>
-              </div>
-              <p className="text-muted-foreground mb-6">
-                Our SIWES program provides hands-on industry experience for students, 
-                combining practical learning with mentorship from experienced professionals.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Users className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-foreground">Structured Mentorship</h4>
-                    <p className="text-sm text-muted-foreground">Weekly one-on-one sessions with industry experts</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <BadgeCheck className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-foreground">Real Projects</h4>
-                    <p className="text-sm text-muted-foreground">Work on actual products and solutions</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-foreground">Certification</h4>
-                    <p className="text-sm text-muted-foreground">Industry-recognized certificates upon completion</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <Clock className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-foreground">Flexible Duration</h4>
-                    <p className="text-sm text-muted-foreground">3-12 months based on your academic requirements</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <section className="bg-muted/40 py-16">
+          <div className="section-shell grid gap-5 md:grid-cols-3">
+            <article className="rounded-2xl border border-border bg-card p-6 shadow-soft"><Users className="h-5 w-5 text-primary" /><h3 className="mt-3 font-semibold">Why join Orao</h3><p className="mt-2 text-sm text-muted-foreground">Mentor-led projects, real engineering workflows, and career support.</p></article>
+            <article className="rounded-2xl border border-border bg-card p-6 shadow-soft"><CheckCircle2 className="h-5 w-5 text-primary" /><h3 className="mt-3 font-semibold">Benefits</h3><p className="mt-2 text-sm text-muted-foreground">Portfolio projects, recommendation support, and team collaboration skills.</p></article>
+            <article className="rounded-2xl border border-border bg-card p-6 shadow-soft"><CalendarClock className="h-5 w-5 text-primary" /><h3 className="mt-3 font-semibold">Opportunities</h3><p className="mt-2 text-sm text-muted-foreground">Top performers are considered for internships and full-time pathways.</p></article>
+          </div>
+        </section>
 
-            <div className="glass p-6 rounded-2xl">
-              <h3 className="text-lg font-bold text-foreground mb-4">Training Tracks</h3>
-              <div className="space-y-2">
-                {tracks.map((track) => (
-                  <div key={track.value} className="px-3 py-2 bg-primary/10 text-primary text-sm rounded-lg">
-                    {track.label}
+        <section className="py-16">
+          <div className="section-shell grid gap-8 lg:grid-cols-2">
+            <article className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <h2 className="text-xl font-semibold">Application process</h2>
+              <ul className="mt-4 space-y-2">
+                {timeline.map((step) => (
+                  <li key={step} className="text-sm text-muted-foreground">• {step}</li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <h2 className="text-xl font-semibold">Frequently asked questions</h2>
+              <div className="mt-4 space-y-4">
+                {faqs.map((faq) => (
+                  <div key={faq.q}>
+                    <p className="text-sm font-semibold">{faq.q}</p>
+                    <p className="text-sm text-muted-foreground">{faq.a}</p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="glass p-6 rounded-2xl bg-gradient-to-br from-accent/5 to-primary/5">
-              <h4 className="font-bold text-foreground mb-3">Program Benefits</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>Industry experience certificate</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>Letter of recommendation</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>Portfolio development</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>Networking opportunities</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>Possible job placement</span>
-                </li>
-              </ul>
-            </div>
+            </article>
           </div>
+        </section>
 
-          {/* Application Form */}
-          <div className="lg:col-span-2">
-            <div className="glass p-8 rounded-2xl">
-              <h2 className="text-2xl font-bold text-foreground mb-6">Apply for SIWES Program</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="Enter your full name"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="Enter your phone number"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="university" className="block text-sm font-medium text-foreground mb-2">
-                      University/Institution *
-                    </label>
-                    <input
-                      type="text"
-                      id="university"
-                      name="university"
-                      value={formData.university}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="Enter your university"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="course" className="block text-sm font-medium text-foreground mb-2">
-                      Course of Study *
-                    </label>
-                    <input
-                      type="text"
-                      id="course"
-                      name="course"
-                      value={formData.course}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="e.g., Computer Science"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="level" className="block text-sm font-medium text-foreground mb-2">
-                      Current Level *
-                    </label>
-                    <select
-                      id="level"
-                      name="level"
-                      value={formData.level}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      required
-                    >
-                      <option value="">Select your level</option>
-                      {levels.map((level) => (
-                        <option key={level.value} value={level.value}>
-                          {level.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="duration" className="block text-sm font-medium text-foreground mb-2">
-                      Preferred Duration *
-                    </label>
-                    <select
-                      id="duration"
-                      name="duration"
-                      value={formData.duration}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      required
-                    >
-                      <option value="">Select duration</option>
-                      {durations.map((duration) => (
-                        <option key={duration.value} value={duration.value}>
-                          {duration.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="track" className="block text-sm font-medium text-foreground mb-2">
-                      Training Track *
-                    </label>
-                    <select
-                      id="track"
-                      name="track"
-                      value={formData.track}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      required
-                    >
-                      <option value="">Select training track</option>
-                      {tracks.map((track) => (
-                        <option key={track.value} value={track.value}>
-                          {track.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="motivation" className="block text-sm font-medium text-foreground mb-2">
-                    Why do you want to join our SIWES program? *
-                  </label>
-                  <textarea
-                    id="motivation"
-                    name="motivation"
-                    value={formData.motivation}
-                    onChange={handleChange}
-                    rows={6}
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
-                    placeholder="Tell us about your goals, expectations, and how this program aligns with your career aspirations..."
-                    required
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="lg" 
-                  className="w-full" 
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                      Submitting Application...
-                    </>
-                  ) : (
-                    'Submit SIWES Application'
-                  )}
-                </Button>
-              </form>
-            </div>
+        <section className="bg-muted/40 py-16">
+          <div className="section-shell rounded-2xl border border-border bg-card p-8 shadow-soft">
+            <h2 className="text-2xl font-semibold">Apply to the SIWES program</h2>
+            <form onSubmit={submit} className="mt-6 space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input required placeholder="Full name" value={formData.name} onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))} className="h-11 rounded-lg border border-border bg-background px-4 text-sm" />
+                <input required type="email" placeholder="Email address" value={formData.email} onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))} className="h-11 rounded-lg border border-border bg-background px-4 text-sm" />
+              </div>
+              <input required placeholder="Preferred track (Frontend, Backend, Design, AI)" value={formData.track} onChange={(e) => setFormData((p) => ({ ...p, track: e.target.value }))} className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm" />
+              <textarea required rows={5} placeholder="Why are you interested in this program?" value={formData.motivation} onChange={(e) => setFormData((p) => ({ ...p, motivation: e.target.value }))} className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm" />
+              <Button disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit application'}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </form>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 };
