@@ -3,6 +3,7 @@ import { Linkedin, Github, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 const links = [
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
+  { name: 'Academy', href: '#academy' },
   { name: 'Portfolio', href: '#portfolio' },
   { name: 'Team', href: '#team' },
   { name: 'SIWES', href: '#siwes' },
@@ -32,7 +33,7 @@ const Footer = () => {
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-primary">Orao Technologies</h2>
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            We build modern platforms that create measurable business impact. Replace this copy with your official company mission statement.
+            We build useful software, train practical technology talent, and support organizations with calm, reliable digital transformation.
           </p>
           <div className="space-y-2 text-sm text-muted-foreground">
             <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> info@oraotechnologies.tech</p>

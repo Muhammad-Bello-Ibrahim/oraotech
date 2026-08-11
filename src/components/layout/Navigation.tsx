@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
+  { name: 'Academy', href: '#academy' },
   { name: 'Portfolio', href: '#portfolio' },
   { name: 'Team', href: '#team' },
   { name: 'SIWES', href: '#siwes' },
@@ -60,7 +61,7 @@ const Navigation = () => {
         </div>
 
         <Button size="sm" className="hidden md:inline-flex" onClick={() => navigateToSection('#contact')}>
-          Start a project
+          Talk to us
         </Button>
 
         <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen((prev) => !prev)}>
@@ -81,7 +82,7 @@ const Navigation = () => {
               </button>
             ))}
             <Button className="mt-2" onClick={() => navigateToSection('#contact')}>
-              Start a project
+              Talk to us
             </Button>
           </div>
         </div>
