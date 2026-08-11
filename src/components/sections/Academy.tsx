@@ -1,126 +1,139 @@
-import { BookOpen, BriefcaseBusiness, CheckCircle2, Code2, Palette, UsersRound } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, BookOpen, BriefcaseBusiness, CheckCircle2, Code2, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const programmeGroups = [
-  {
-    icon: BookOpen,
-    title: 'Digital Skills & Basic Computing',
-    items: ['Basic Computer Appreciation and Digital Literacy', 'Microsoft Word, Excel and PowerPoint', 'Internet, Email and Online Productivity', 'Typing and Office Productivity Skills', 'File, Folder and Document Management', 'Basic Computer Troubleshooting and Maintenance'],
-  },
+const featuredProgrammes = [
   {
     icon: Code2,
-    title: 'Programming & Software Development',
-    items: ['Programming fundamentals', 'HTML and CSS', 'JavaScript and modern web technologies', 'Frontend Web Development', 'Backend and Full-Stack Web Development', 'PHP, Node.js and other relevant programming technologies', 'Database Management and SQL', 'API Development and Integration', 'Mobile Application Development', 'Software Engineering fundamentals', 'Version Control and collaborative development using Git/GitHub', 'AI-assisted software development and responsible use of AI tools'],
+    title: 'Software Development',
+    eyebrow: 'Code track',
+    description: 'Build practical websites, apps, APIs, databases, and portfolio projects with mentorship from fundamentals to deployment.',
+    outcomes: ['Frontend and backend foundations', 'Git/GitHub collaboration', 'Capstone product build'],
   },
   {
     icon: Palette,
-    title: 'Graphics Design & Creative Technology',
-    items: ['CorelDRAW', 'Adobe Photoshop', 'Adobe Illustrator', 'Canva and related design tools', 'Logo and Brand Identity Design', 'Flyer, Poster and Social Media Design', 'UI/UX Design', 'Basic Video Editing and Multimedia Design'],
-  },
-  {
-    icon: UsersRound,
-    title: 'SIWES, Internship & Practical Training',
-    items: ['SIWES student training and supervision', 'Industrial and practical technology training', 'Structured student projects', 'Assignments, assessments and practical examinations', 'Project supervision and mentoring', 'Training documentation and progress tracking', 'Final project development and presentation', 'Certificates of completion where applicable'],
+    title: 'Creative Technology',
+    eyebrow: 'Design track',
+    description: 'Learn brand identity, graphics, UI/UX, social media design, and presentation-ready creative workflows.',
+    outcomes: ['CorelDRAW, Photoshop and Canva', 'Logo and visual identity', 'Portfolio-ready projects'],
   },
   {
     icon: BriefcaseBusiness,
-    title: 'Bootcamps, Short Courses & Professional Training',
-    items: ['Web Development Bootcamps', 'Graphics Design Bootcamps', 'Computer Appreciation and Digital Literacy programmes', 'Frontend, Backend and Full-Stack Development programmes', 'Python and other programming courses', 'UI/UX Design programmes', 'Digital Marketing and digital business skills', 'AI Tools for Productivity and Technology', 'Freelancing and remote-work skills', 'Entrepreneurship and technology business programmes', 'Holiday and youth technology programmes'],
-  },
-  {
-    icon: Code2,
-    title: 'Developer Workspace & Technology Hub',
-    items: ['Software and product development', 'Team-based development projects', 'Client project development', 'Developer collaboration and coworking', 'Coding practice and technical problem-solving', 'Code review and project mentoring', 'Software testing and experimentation', 'Startup and MVP development', 'Research and development activities'],
-  },
-  {
-    icon: UsersRound,
-    title: 'Mentorship, Career & Professional Development',
-    items: ['Technical mentorship', 'Project supervision', 'Career guidance', 'CV and portfolio development', 'Professional branding and LinkedIn development', 'Freelancing and client management education', 'Interview and workplace-readiness preparation', 'Peer-learning and student presentation sessions'],
-  },
-  {
-    icon: BookOpen,
-    title: 'Workshops, Seminars & Technology Events',
-    items: ['Technology workshops', 'Career seminars and talks', 'Developer meetups', 'Guest lectures and specialist sessions', 'Student presentations', 'Hackathons and coding competitions', 'Design competitions', 'Project demo days', 'Innovation and entrepreneurship events'],
-  },
-  {
-    icon: BriefcaseBusiness,
-    title: 'Corporate & Institutional Training',
-    items: ['Customized staff technology training', 'Digital literacy programmes for organizations', 'Microsoft Office and productivity training', 'Programming and technical upskilling', 'Graphics and digital communication training', 'Customized workshops for schools, businesses, NGOs and institutions'],
-  },
-  {
-    icon: CheckCircle2,
-    title: 'Technology & Innovation Programmes',
-    items: ['Technology research and development', 'Prototype and MVP development', 'Student innovation projects', 'Startup incubation and early-stage product support', 'Emerging technology workshops', 'Digital transformation education and projects'],
-  },
-  {
-    icon: Palette,
-    title: 'Commercial Technology Services',
-    items: ['Website Design and Development', 'Web Application and Software Development', 'Mobile Application Development', 'UI/UX Design', 'Graphics Design and Brand Identity Services', 'Social Media Creative Design', 'Software Maintenance and Technical Support', 'Database and API Development', 'IT Consultancy and Technical Advisory Services', 'Digital Transformation Services', 'Corporate Technology Training', 'Website, software and digital product maintenance contracts', 'Prototype, MVP and startup product development'],
+    title: 'SIWES & Career Practice',
+    eyebrow: 'Work track',
+    description: 'A guided practical pathway for students and interns, combining real assignments, supervision, documentation, and workplace readiness.',
+    outcomes: ['Structured project supervision', 'Assessment and progress tracking', 'CV and presentation support'],
   },
 ];
 
+const moreProgrammes = [
+  'Digital Skills & Basic Computing',
+  'Bootcamps & Short Courses',
+  'Developer Workspace & Technology Hub',
+  'Mentorship & Professional Development',
+  'Workshops, Seminars & Technology Events',
+  'Corporate & Institutional Training',
+  'Technology & Innovation Programmes',
+  'Commercial Technology Services',
+];
+
 const Academy = () => {
+  const [showAll, setShowAll] = useState(false);
   const scrollToContact = () => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section id="academy" className="bg-background py-20">
-      <div className="section-shell space-y-12">
-        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+    <section id="academy" className="overflow-hidden bg-background py-20">
+      <div className="section-shell space-y-10">
+        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Orao Academy</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">A calm place to learn, practise, and become employable.</h2>
+            <p className="inline-flex rounded-full border border-primary/15 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary shadow-soft">
+              Orao Academy
+            </p>
+            <h2 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">
+              Focused career pathways without the clutter.
+            </h2>
           </div>
           <p className="text-base leading-8 text-muted-foreground">
-            We train students, interns, young professionals, organizations, and founders through structured lessons, project supervision, career mentoring, and real client exposure. The academy is designed for practical confidence — not noisy hype.
+            Inspired by simple career tracks, we now highlight three clear ways to learn: code, design, and workplace practice. Each path is practical, mentor-led, and built around visible projects.
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-[1fr_0.8fr]">
-          <div className="image-placeholder min-h-[340px] p-8" aria-label="Academy training image placeholder">
-            <div className="space-y-3">
-              <p className="text-base font-semibold text-foreground">Placeholder: students in class</p>
-              <p className="max-w-md text-xs leading-6">Use a warm image of learners working on laptops, presenting projects, or receiving mentorship in the Orao hub.</p>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            {['Beginner-friendly pathways', 'Project-based assessments', 'Mentorship and portfolio support'].map((item) => (
-              <article key={item} className="rounded-3xl border border-border bg-card p-6 shadow-soft">
-                <CheckCircle2 className="h-5 w-5 text-accent-dark" />
-                <h3 className="mt-4 text-lg font-semibold">{item}</h3>
-                <p className="mt-2 text-sm leading-7 text-muted-foreground">Designed to help learners move gently from fundamentals to visible, reviewable work.</p>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {programmeGroups.map((group) => (
-            <article key={group.title} className="rounded-3xl border border-border bg-card p-6 shadow-soft transition-smooth hover:-translate-y-1 hover:shadow-card">
-              <div className="flex items-start gap-4">
-                <div className="rounded-2xl bg-primary/10 p-3 text-primary"><group.icon className="h-5 w-5" /></div>
-                <div>
-                  <h3 className="text-lg font-semibold leading-tight">{group.title}</h3>
-                  <p className="mt-2 text-xs text-muted-foreground">{group.items.length} focus areas</p>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {featuredProgrammes.map((programme, index) => (
+            <article
+              key={programme.title}
+              className="group relative overflow-hidden rounded-[2rem] border border-border bg-card p-6 shadow-soft transition-smooth hover:-translate-y-1 hover:shadow-card"
+              style={{ animationDelay: `${index * 90}ms` }}
+            >
+              <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-accent/20 blur-2xl transition-smooth group-hover:scale-125" />
+              <div className="relative space-y-7">
+                <div className="flex items-center justify-between">
+                  <div className="rounded-2xl bg-primary/10 p-3 text-primary">
+                    <programme.icon className="h-5 w-5" />
+                  </div>
+                  <span className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">{programme.eyebrow}</span>
                 </div>
+                <div>
+                  <h3 className="text-2xl font-semibold tracking-tight">{programme.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground">{programme.description}</p>
+                </div>
+                <ul className="space-y-3">
+                  {programme.outcomes.map((outcome) => (
+                    <li key={outcome} className="flex items-center gap-3 text-sm text-foreground/80">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-accent-dark" />
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-5 space-y-2">
-                {group.items.map((item) => (
-                  <li key={item} className="flex gap-2 text-sm leading-6 text-muted-foreground">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </article>
           ))}
         </div>
 
-        <div className="rounded-[2rem] border border-primary/15 bg-gradient-to-br from-primary/10 via-white to-accent/10 p-8 text-center shadow-soft sm:p-12">
-          <h3 className="text-2xl font-semibold sm:text-4xl">Ready to train a student cohort or enrol as a learner?</h3>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-            Talk to Orao Academy about course guidance, SIWES placement, institutional training, or a custom technology programme.
-          </p>
-          <Button className="mt-7" size="lg" onClick={scrollToContact}>Contact the academy</Button>
+        <div className="rounded-[2rem] border border-primary/10 bg-white/75 p-4 shadow-soft backdrop-blur sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3">
+              <div className="rounded-2xl bg-accent/20 p-3 text-accent-dark">
+                <BookOpen className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold">Need another pathway?</h3>
+                <p className="text-sm text-muted-foreground">Reveal the complete academy catalogue only when you need it.</p>
+              </div>
+            </div>
+            <Button variant="outline" className="group rounded-full" onClick={() => setShowAll((value) => !value)} aria-expanded={showAll}>
+              {showAll ? 'Hide all programmes' : 'View all programmes'}
+              <ArrowRight className={`ml-2 h-4 w-4 transition-transform duration-300 ${showAll ? 'rotate-90' : 'group-hover:translate-x-1'}`} />
+            </Button>
+          </div>
+
+          <div className={`grid transition-all duration-500 ease-out ${showAll ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+            <div className="overflow-hidden">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {moreProgrammes.map((programme, index) => (
+                  <div
+                    key={programme}
+                    className="rounded-2xl border border-border bg-background px-4 py-3 text-sm font-medium text-foreground/80 shadow-sm transition-smooth hover:border-primary/25 hover:bg-primary/5"
+                    style={{ transitionDelay: showAll ? `${index * 35}ms` : '0ms' }}
+                  >
+                    {programme}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-start justify-between gap-5 rounded-[2rem] bg-gradient-to-br from-primary-dark to-primary p-8 text-primary-foreground shadow-soft sm:flex-row sm:items-center">
+          <div>
+            <h3 className="text-2xl font-semibold">Ready to choose a path?</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-primary-foreground/80">
+              Talk to Orao Academy about enrolment, SIWES placement, cohort training, or a custom institutional programme.
+            </p>
+          </div>
+          <Button className="shrink-0 bg-white text-primary hover:bg-white/90" size="lg" onClick={scrollToContact}>
+            Contact the academy
+          </Button>
         </div>
       </div>
     </section>
