@@ -36,9 +36,9 @@ const Footer = () => {
             We build useful software, train practical technology talent, and support organizations with calm, reliable digital transformation.
           </p>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> info@oraotechnologies.tech</p>
+            <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> info@oraotechnologies.com.ng</p>
             <p className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +234 (90) 325 090 94</p>
-            <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Lagos, Nigeria</p>
+            <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Gombe, Nigeria</p>
           </div>
         </div>
 

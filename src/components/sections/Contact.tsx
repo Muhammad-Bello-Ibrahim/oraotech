@@ -39,9 +39,9 @@ const Contact = () => {
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Let’s discuss your next build.</h2>
           <p className="text-base text-muted-foreground">Share your goals and timeline. We’ll respond with a practical implementation plan.</p>
           <div className="space-y-3 rounded-2xl border border-border bg-card p-6 text-sm text-muted-foreground shadow-soft">
-            <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> info@oraotechnologies.tech</p>
+            <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> info@oraotechnologies.com.ng</p>
             <p className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +234 (90) 325 090 94</p>
-            <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Lagos, Nigeria</p>
+            <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Gombe, Nigeria</p>
           </div>
         </div>
 
