@@ -1,4 +1,4 @@
-import { ArrowRight, GraduationCap, Sparkles } from 'lucide-react';
+import { ArrowRight, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const stats = [
@@ -18,7 +18,7 @@ const Hero = () => {
       <div className="section-shell relative grid items-center gap-12 lg:grid-cols-[1fr_0.92fr]">
         <div className="space-y-7">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary shadow-soft backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5" /> Calm technology for real growth
+            THINK BOLD, BUILD SMART
           </p>
           <div className="space-y-5">
             <h1 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-7xl">
