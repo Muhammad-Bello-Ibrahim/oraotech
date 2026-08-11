@@ -1,67 +1,59 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { ExternalLink, Building, Users, Heart, ShoppingCart, GraduationCap, Blocks } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const projects = [
+  { id: 'connectrix', title: 'Connectrix', category: 'Software', description: 'Student operations platform that improved collections and engagement by over 80%.' },
+  { id: 'mesafe', title: 'meSafe', category: 'HealthTech', description: 'Secure health records platform improving care continuity across facilities.' },
+  { id: 'shopmon', title: 'Shopmon', category: 'Ecommerce', description: 'Location-based marketplace connecting communities to local merchants.' },
+  { id: 'elevatex', title: 'Elevatex', category: 'Blockchain', description: 'Smart-contract powered referral system with transparent reward tracking.' },
+  { id: 'lectrocloud', title: 'Lectrocloud', category: 'EdTech', description: 'Cloud learning platform that increased student participation and completion.' },
+  { id: 'vrs-data', title: 'VRS Data', category: 'Software', description: 'High-availability utility transaction service handling thousands of daily requests.' },
+];
+
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
   const navigate = useNavigate();
+  const [showAll, setShowAll] = useState(false);
 
-  const categories = ['All', 'Software', 'Blockchain', 'HealthTech', 'EdTech', 'Ecommerce', 'EdServices'];
-
-  const projects = [
-    { id: 'connectrix', title: 'Connectrix', category: 'Software', description: 'Dues collection and student engagement platform for higher institutions.', icon: Users },
-    { id: 'mesafe', title: 'meSafe', category: 'HealthTech', description: 'Digital health record management with secure cloud workflows.', icon: Heart },
-    { id: 'shopmon', title: 'Shopmon', category: 'Ecommerce', description: 'Location-based marketplace connecting local buyers and sellers.', icon: ShoppingCart },
-    { id: 'elevatex', title: 'Elevatex', category: 'Blockchain', description: 'Referral-driven financial model powered by smart contracts.', icon: Blocks },
-    { id: 'bigtailor', title: 'BigTailor', category: 'Ecommerce', description: 'Tailoring-focused e-commerce platform with virtual fitting concept.', icon: ShoppingCart },
-    { id: 'lectrocloud', title: 'Lectrocloud', category: 'EdTech', description: 'Cloud student engagement platform for university ecosystems.', icon: GraduationCap },
-    { id: 'libolt', title: 'Libolt', category: 'EdServices', description: 'JAMB practice system with guidance and progress analytics.', icon: GraduationCap },
-    { id: 'arks-xpress', title: 'Arks Xpress', category: 'Ecommerce', description: 'Local e-commerce and payment solution for Nigerian businesses.', icon: Building },
-    { id: 'vrs-data', title: 'VRS Data', category: 'Software', description: 'Virtual top-up utility platform for airtime and bills.', icon: Building },
-  ];
-
-  const filteredProjects = activeFilter === 'All'
-    ? projects
-    : projects.filter((project) => project.category === activeFilter);
+  const visibleProjects = useMemo(() => (showAll ? projects : projects.slice(0, 3)), [showAll]);
 
   return (
-    <section id="portfolio" className="bg-background py-24">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl space-y-5">
+    <section id="portfolio" className="bg-background py-20">
+      <div className="section-shell">
+        <div className="max-w-3xl space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Portfolio</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Selected projects across industries.</h2>
-          <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-            We build products that solve practical challenges in education, commerce, finance, and healthcare.
-          </p>
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Featured work with measurable outcomes.</h2>
+          <p className="text-base text-muted-foreground">Showing 3 featured projects first. Expand to explore the full project portfolio.</p>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={activeFilter === category ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setActiveFilter(category)}
-            >
-              {category}
-            </Button>
-          ))}
+        <div className="mt-10 overflow-hidden">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {visibleProjects.map((project, index) => (
+              <article
+                key={project.id}
+                className="rounded-2xl border border-border bg-card p-5 shadow-soft transition-smooth hover:-translate-y-0.5"
+                style={{ animation: showAll && index >= 3 ? 'fade-in-up 300ms ease forwards' : undefined }}
+              >
+                <div className="image-placeholder min-h-[140px] p-4" aria-label={`${project.title} placeholder image`}>
+                  <p className="text-xs">Insert compelling project image here</p>
+                </div>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-accent">{project.category}</p>
+                <h3 className="mt-2 text-lg font-semibold">{project.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{project.description}</p>
+                <Button variant="ghost" className="mt-4 px-0 hover:bg-transparent" onClick={() => navigate(`/projects/${project.id}`)}>
+                  View project
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </article>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
-            <article key={project.id} className="rounded-2xl border border-border bg-card p-6 shadow-soft transition-smooth hover:border-primary/35 hover:shadow-card">
-              <project.icon className="h-5 w-5 text-primary" />
-              <h3 className="mt-4 text-lg font-semibold text-foreground">{project.title}</h3>
-              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-accent">{project.category}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-              <Button variant="ghost" className="mt-4 px-0 text-primary hover:bg-transparent hover:text-accent" onClick={() => navigate(`/projects/${project.id}`)}>
-                View project
-                <ExternalLink className="h-4 w-4" />
-              </Button>
-            </article>
-          ))}
+        <div className="mt-8 flex justify-center">
+          <Button variant="outline" onClick={() => setShowAll((prev) => !prev)}>
+            {showAll ? 'Show Featured Only' : 'View All Projects'}
+          </Button>
         </div>
       </div>
     </section>
