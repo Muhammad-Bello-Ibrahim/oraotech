@@ -1,10 +1,10 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, GraduationCap, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const stats = [
-  { value: '70+', label: 'Projects delivered' },
-  { value: '35+', label: 'Clients served' },
-  { value: '6+', label: 'Years building' },
+  { value: '70+', label: 'Products and platforms delivered' },
+  { value: '11', label: 'Academy training tracks' },
+  { value: '100s', label: 'Students mentored practically' },
 ];
 
 const Hero = () => {
@@ -13,42 +13,58 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="bg-gradient-hero pt-28 pb-20">
-      <div className="section-shell grid items-center gap-10 lg:grid-cols-[1fr_0.85fr]">
-        <div className="space-y-6">
-          <p className="inline-flex rounded-full border border-primary/20 bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            Real impact, built cleanly
+    <section id="home" className="relative overflow-hidden bg-gradient-hero pt-28 pb-20 sm:pt-32">
+      <div className="absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/20 blur-3xl" />
+      <div className="section-shell relative grid items-center gap-12 lg:grid-cols-[1fr_0.92fr]">
+        <div className="space-y-7">
+          <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary shadow-soft backdrop-blur">
+            <Sparkles className="h-3.5 w-3.5" /> Calm technology for real growth
           </p>
-          <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            We build digital products that move organizations forward.
-          </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Orao Technologies designs and ships software, platforms, and training programs with a sharp focus on measurable outcomes.
-          </p>
+          <div className="space-y-5">
+            <h1 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-7xl">
+              Build better software. Train stronger talent. Grow with confidence.
+            </h1>
+            <p className="max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+              Orao Technologies is a gentle, practical technology partner for organizations and students — combining product development, digital transformation, and hands-on academy training under one roof.
+            </p>
+          </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button size="lg" onClick={() => scrollTo('#services')}>
-              Explore services
+            <Button size="lg" onClick={() => scrollTo('#academy')}>
+              Explore the academy
+              <GraduationCap className="h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="lg" onClick={() => scrollTo('#services')}>
+              See what we build
               <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="lg" onClick={() => scrollTo('#portfolio')}>
-              View case studies
-            </Button>
           </div>
-          <div className="grid gap-4 border-t border-border pt-6 sm:grid-cols-3">
+          <div className="grid gap-4 border-t border-border/80 pt-6 sm:grid-cols-3">
             {stats.map((stat) => (
-              <div key={stat.label}>
+              <div key={stat.label} className="rounded-2xl bg-white/60 p-4 shadow-soft backdrop-blur">
                 <p className="text-3xl font-semibold text-primary">{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="image-placeholder min-h-[320px] p-8 sm:min-h-[420px]" aria-label="Hero image placeholder">
-          <p>
-            Insert compelling hero image here<br />
-            <span className="text-xs">Professional team or product showcase visual</span>
-          </p>
+        <div className="relative">
+          <div className="absolute -left-6 top-10 hidden rounded-2xl border border-border bg-white p-4 shadow-card lg:block">
+            <p className="text-xs font-medium text-muted-foreground">Academy cohort</p>
+            <p className="text-2xl font-semibold text-primary">48 learners</p>
+          </div>
+          <div className="image-placeholder min-h-[420px] p-8 sm:min-h-[540px]" aria-label="Hero image placeholder">
+            <div className="space-y-3">
+              <p className="text-base font-semibold text-foreground">Placeholder: calm hero visual</p>
+              <p className="mx-auto max-w-xs text-xs leading-6">
+                Add a soft photo or 3D illustration of students collaborating with developers in the Orao technology hub.
+              </p>
+            </div>
+          </div>
+          <div className="absolute -bottom-6 right-6 rounded-2xl border border-border bg-white p-4 shadow-card">
+            <p className="text-xs font-medium text-muted-foreground">Workspace rhythm</p>
+            <p className="text-lg font-semibold text-foreground">Learn • Build • Launch</p>
+          </div>
         </div>
       </div>
     </section>
