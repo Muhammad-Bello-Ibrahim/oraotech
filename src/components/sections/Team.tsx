@@ -1,5 +1,6 @@
 import { Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import ceoImage from '@/assets/ceo.png';
 
 const members = [
   { id: 'almustapha-ibrahim-gurama', name: 'Almustapha Ibrahim Gurama', role: 'President' },
@@ -26,8 +27,12 @@ const Team = () => {
               onClick={() => navigate(`/team/${member.id}`)}
               className="rounded-2xl border border-border bg-card p-5 text-left shadow-soft transition-smooth hover:border-primary/35"
             >
-              <div className="image-placeholder min-h-[160px]" aria-label={`${member.name} profile placeholder`}>
-                <span className="text-xs">Professional photo placeholder</span>
+              <div className="image-placeholder min-h-[160px]" aria-label={`${member.name} profile image`}>
+                {member.id === 'muhammad-bello-ibrahim' ? (
+                  <img src={ceoImage} alt={`${member.name} profile`} className="h-full w-full object-contain" />
+                ) : (
+                  <span className="text-xs">Professional photo placeholder</span>
+                )}
               </div>
               <h3 className="mt-4 text-base font-semibold">{member.name}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{member.role}</p>

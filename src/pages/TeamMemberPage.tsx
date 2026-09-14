@@ -3,6 +3,7 @@ import { ArrowLeft, Github, Globe, Linkedin } from 'lucide-react';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
+import ceoImage from '@/assets/ceo.png';
 
 type MemberProfile = {
   name: string;
@@ -66,8 +67,12 @@ const TeamMemberPage = () => {
       <main className="pt-20">
         <section className="py-16">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-            <div className="image-placeholder min-h-[340px] p-8" aria-label="Team member image placeholder">
-              <p>Insert professional team member portrait here</p>
+            <div className="image-placeholder min-h-[340px] p-8" aria-label={`${member.name} profile image`}>
+              {memberId === 'muhammad-bello-ibrahim' ? (
+                <img src={ceoImage} alt={`${member.name} profile`} className="h-full w-full object-contain" />
+              ) : (
+                <p>Insert professional team member portrait here</p>
+              )}
             </div>
             <div className="space-y-5">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Team member profile</p>
