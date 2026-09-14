@@ -1,12 +1,15 @@
 import { Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ceoImage from '@/assets/ceo.png';
+import presidentImage from '@/assets/ChatGPT Image Sep 14, 2026, 04_36_27 AM (8).png';
+import ctoImage from '@/assets/ChatGPT Image Sep 14, 2026, 04_36_26 AM (7).png';
+import frontendImage from '@/assets/ChatGPT Image Sep 14, 2026, 04_36_26 AM (6).png';
 
 const members = [
-  { id: 'almustapha-ibrahim-gurama', name: 'Almustapha Ibrahim Gurama', role: 'President' },
-  { id: 'muhammad-bello-ibrahim', name: 'Muhammad Bello Ibrahim MCS', role: 'Chief Executive Officer' },
-  { id: 'andurrahman-grema', name: 'Engr. Andurrahman Grema', role: 'Chief Technology Officer' },
-  { id: 'abbas-abdullahi', name: 'Abbas Abdullahi', role: 'Frontend Lead' },
+  { id: 'almustapha-ibrahim-gurama', name: 'Almustapha Ibrahim Gurama', role: 'President', image: presidentImage },
+  { id: 'muhammad-bello-ibrahim', name: 'Muhammad Bello Ibrahim', role: 'Chief Executive Officer', image: ceoImage },
+  { id: 'andurrahman-grema', name: 'Engr. Andurrahman Grema', role: 'Chief Technology Officer', image: ctoImage },
+  { id: 'abbas-abdullahi', name: 'Abbas Abdullahi', role: 'Frontend Lead', image: frontendImage },
 ];
 
 const Team = () => {
@@ -27,12 +30,8 @@ const Team = () => {
               onClick={() => navigate(`/team/${member.id}`)}
               className="rounded-2xl border border-border bg-card p-5 text-left shadow-soft transition-smooth hover:border-primary/35"
             >
-              <div className="image-placeholder min-h-[160px]" aria-label={`${member.name} profile image`}>
-                {member.id === 'muhammad-bello-ibrahim' ? (
-                  <img src={ceoImage} alt={`${member.name} profile`} className="h-full w-full object-contain" />
-                ) : (
-                  <span className="text-xs">Professional photo placeholder</span>
-                )}
+              <div className="image-placeholder min-h-[160px] overflow-hidden p-0" aria-label={`${member.name} profile image`}>
+                <img src={member.image} alt={`${member.name} profile`} className="h-full w-full object-cover" />
               </div>
               <h3 className="mt-4 text-base font-semibold">{member.name}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{member.role}</p>

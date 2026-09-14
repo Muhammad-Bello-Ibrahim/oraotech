@@ -1,4 +1,5 @@
 import { Leaf, ShieldCheck, TrendingUp, Users } from 'lucide-react';
+import heroImage from '@/assets/hero 2.png';
 
 const indicators = [
   { icon: Leaf, title: 'Gentle discovery', detail: 'We slow down enough to understand people, process, constraints, and desired outcomes before building.' },
@@ -33,6 +34,10 @@ const About = () => (
             <p className="mt-1 text-sm text-muted-foreground">{metric.label}</p>
           </article>
         ))}
+      </div>
+
+      <div className="image-placeholder min-h-[260px] overflow-hidden p-0" aria-label="Orao technology team at work">
+        <img src={heroImage} alt="Orao technology team working together" className="h-full w-full object-cover" />
       </div>
 
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">

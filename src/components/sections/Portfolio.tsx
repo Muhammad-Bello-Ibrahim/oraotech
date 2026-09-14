@@ -2,11 +2,14 @@ import { useMemo, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import connectrixImage from '@/assets/connectrix.png';
+import meSafeImage from '@/assets/mesafe.png';
+import shopmonImage from '@/assets/shopmon.png';
 
 const projects = [
-  { id: 'connectrix', title: 'Connectrix', category: 'Software', description: 'Student operations platform that improved collections and engagement by over 80%.' },
-  { id: 'mesafe', title: 'meSafe', category: 'HealthTech', description: 'Secure health records platform improving care continuity across facilities.' },
-  { id: 'shopmon', title: 'Shopmon', category: 'Ecommerce', description: 'Location-based marketplace connecting communities to local merchants.' },
+  { id: 'connectrix', title: 'Connectrix', category: 'Software', description: 'Student operations platform that improved collections and engagement by over 80%.', image: connectrixImage },
+  { id: 'mesafe', title: 'meSafe', category: 'HealthTech', description: 'Secure health records platform improving care continuity across facilities.', image: meSafeImage },
+  { id: 'shopmon', title: 'Shopmon', category: 'Ecommerce', description: 'Location-based marketplace connecting communities to local merchants.', image: shopmonImage },
   { id: 'elevatex', title: 'Elevatex', category: 'Blockchain', description: 'Smart-contract powered referral system with transparent reward tracking.' },
   { id: 'lectrocloud', title: 'Lectrocloud', category: 'EdTech', description: 'Cloud learning platform that increased student participation and completion.' },
   { id: 'vrs-data', title: 'VRS Data', category: 'Software', description: 'High-availability utility transaction service handling thousands of daily requests.' },
@@ -35,8 +38,8 @@ const Portfolio = () => {
                 className="rounded-2xl border border-border bg-card p-5 shadow-soft transition-smooth hover:-translate-y-0.5"
                 style={{ animation: showAll && index >= 3 ? 'fade-in-up 300ms ease forwards' : undefined }}
               >
-                <div className="image-placeholder min-h-[140px] p-4" aria-label={`${project.title} placeholder image`}>
-                  <p className="text-xs">Insert compelling project image here</p>
+                <div className="image-placeholder min-h-[140px] overflow-hidden p-0" aria-label={`${project.title} project image`}>
+                  {project.image ? <img src={project.image} alt={`${project.title} project interface`} className="h-full w-full object-cover" /> : <p className="p-4 text-xs">Project image coming soon</p>}
                 </div>
                 <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-accent">{project.category}</p>
                 <h3 className="mt-2 text-lg font-semibold">{project.title}</h3>

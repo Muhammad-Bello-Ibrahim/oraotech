@@ -4,6 +4,7 @@ import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import siwesImage from '@/assets/siwes 1.png';
 
 const faqs = [
   { q: 'Who can apply?', a: 'SIWES students and early-career learners in relevant technical disciplines.' },
@@ -56,8 +57,8 @@ const SiwesPage = () => {
                 <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">4 learning tracks available</div>
               </div>
             </div>
-            <div className="image-placeholder min-h-[320px] p-8" aria-label="SIWES overview image placeholder">
-              <p>Insert SIWES cohort/program image here</p>
+            <div className="image-placeholder min-h-[320px] overflow-hidden p-0" aria-label="SIWES cohort image">
+              <img src={siwesImage} alt="SIWES students collaborating in a technology workspace" className="h-full w-full object-cover" />
             </div>
           </div>
         </section>

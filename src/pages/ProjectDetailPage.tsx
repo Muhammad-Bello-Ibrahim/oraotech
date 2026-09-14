@@ -3,6 +3,9 @@ import { ArrowRight, CheckCircle2, TrendingUp } from 'lucide-react';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
+import connectrixImage from '@/assets/connectrix.png';
+import meSafeImage from '@/assets/mesafe.png';
+import shopmonImage from '@/assets/shopmon.png';
 
 type ProjectDetail = {
   title: string;
@@ -15,6 +18,7 @@ type ProjectDetail = {
   technologies: string[];
   contributors: string[];
   nextProjectId: string;
+  image: string;
 };
 
 const projectData: Record<string, ProjectDetail> = {
@@ -29,6 +33,7 @@ const projectData: Record<string, ProjectDetail> = {
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Payment APIs'],
     contributors: ['Product Manager', 'Frontend Engineer', 'Backend Engineer', 'QA Engineer'],
     nextProjectId: 'mesafe',
+    image: connectrixImage,
   },
   mesafe: {
     title: 'meSafe',
@@ -41,6 +46,7 @@ const projectData: Record<string, ProjectDetail> = {
     technologies: ['React', 'Node.js', 'Cloud Storage', 'Biometric SDK'],
     contributors: ['Health Product Lead', 'Security Engineer', 'Platform Engineer'],
     nextProjectId: 'shopmon',
+    image: meSafeImage,
   },
   shopmon: {
     title: 'Shopmon',
@@ -53,6 +59,7 @@ const projectData: Record<string, ProjectDetail> = {
     technologies: ['React', 'Express', 'Geo APIs', 'Realtime Messaging'],
     contributors: ['Product Designer', 'Frontend Engineer', 'Backend Engineer'],
     nextProjectId: 'connectrix',
+    image: shopmonImage,
   },
 };
 
@@ -78,8 +85,8 @@ const ProjectDetailPage = () => {
                 ))}
               </ul>
             </div>
-            <div className="image-placeholder min-h-[320px] p-8" aria-label="Project hero image placeholder">
-              <p>Insert compelling project image here</p>
+            <div className="image-placeholder min-h-[320px] overflow-hidden p-0" aria-label={`${project.title} project image`}>
+              <img src={project.image} alt={`${project.title} project interface`} className="h-full w-full object-cover" />
             </div>
           </div>
         </section>

@@ -4,6 +4,9 @@ import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import ceoImage from '@/assets/ceo.png';
+import presidentImage from '@/assets/ChatGPT Image Sep 14, 2026, 04_36_27 AM (8).png';
+import ctoImage from '@/assets/ChatGPT Image Sep 14, 2026, 04_36_26 AM (7).png';
+import frontendImage from '@/assets/ChatGPT Image Sep 14, 2026, 04_36_26 AM (6).png';
 
 type MemberProfile = {
   name: string;
@@ -12,6 +15,7 @@ type MemberProfile = {
   skills: string[];
   projects: string[];
   socials: { label: string; href: string; icon: typeof Linkedin }[];
+  image: string;
 };
 
 const members: Record<string, MemberProfile> = {
@@ -22,9 +26,10 @@ const members: Record<string, MemberProfile> = {
     skills: ['Strategic leadership', 'Partnership development', 'Operational governance'],
     projects: ['Institutional transformation programs', 'Cross-sector partnerships'],
     socials: [{ label: 'LinkedIn', href: 'https://linkedin.com/in/almustapha-gurama', icon: Linkedin }],
+    image: presidentImage,
   },
   'muhammad-bello-ibrahim': {
-    name: 'Muhammad Bello Ibrahim MCS',
+    name: 'Muhammad Bello Ibrahim',
     role: 'Chief Executive Officer',
     bio: 'Technology executive leading solution architecture, delivery quality, and client outcomes across portfolios.',
     skills: ['Product delivery', 'Software architecture', 'Team leadership'],
@@ -33,6 +38,7 @@ const members: Record<string, MemberProfile> = {
       { label: 'LinkedIn', href: 'https://linkedin.com/in/muhammad-bello-ibrahim', icon: Linkedin },
       { label: 'GitHub', href: 'https://github.com/devmufteem', icon: Github as typeof Linkedin },
     ],
+    image: ceoImage,
   },
   'andurrahman-grema': {
     name: 'Engr. Andurrahman Grema',
@@ -41,6 +47,7 @@ const members: Record<string, MemberProfile> = {
     skills: ['System architecture', 'Blockchain engineering', 'AI/ML integration'],
     projects: ['Elevatex blockchain systems', 'Libolt advisory intelligence'],
     socials: [{ label: 'LinkedIn', href: 'https://linkedin.com/in/andurrahman-grema', icon: Linkedin }],
+    image: ctoImage,
   },
   'abbas-abdullahi': {
     name: 'Abbas Abdullahi',
@@ -52,6 +59,7 @@ const members: Record<string, MemberProfile> = {
       { label: 'LinkedIn', href: 'https://linkedin.com/in/abbas-abdullahi', icon: Linkedin },
       { label: 'Website', href: 'https://oraotechnologies.tech', icon: Globe as typeof Linkedin },
     ],
+    image: frontendImage,
   },
 };
 
@@ -68,11 +76,7 @@ const TeamMemberPage = () => {
         <section className="py-16">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
             <div className="image-placeholder min-h-[340px] p-8" aria-label={`${member.name} profile image`}>
-              {memberId === 'muhammad-bello-ibrahim' ? (
-                <img src={ceoImage} alt={`${member.name} profile`} className="h-full w-full object-contain" />
-              ) : (
-                <p>Insert professional team member portrait here</p>
-              )}
+              <img src={member.image} alt={`${member.name} profile`} className="h-full w-full object-cover" />
             </div>
             <div className="space-y-5">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Team member profile</p>

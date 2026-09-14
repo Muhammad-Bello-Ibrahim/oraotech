@@ -1,5 +1,6 @@
 import { ArrowRight, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import heroImage from '@/assets/hero 1.png';
 
 const stats = [
   { value: '70+', label: 'Products and platforms delivered' },
@@ -53,13 +54,8 @@ const Hero = () => {
             <p className="text-xs font-medium text-muted-foreground">Academy cohort</p>
             <p className="text-2xl font-semibold text-primary">48 learners</p>
           </div>
-          <div className="image-placeholder min-h-[420px] p-8 sm:min-h-[540px]" aria-label="Hero image placeholder">
-            <div className="space-y-3">
-              <p className="text-base font-semibold text-foreground">Placeholder: calm hero visual</p>
-              <p className="mx-auto max-w-xs text-xs leading-6">
-                Add a soft photo or 3D illustration of students collaborating with developers in the Orao technology hub.
-              </p>
-            </div>
+          <div className="image-placeholder min-h-[420px] overflow-hidden p-0 sm:min-h-[540px]" aria-label="Orao team collaborating">
+            <img src={heroImage} alt="Orao team collaborating in a technology workspace" className="h-full w-full object-cover" />
           </div>
           <div className="absolute -bottom-6 right-6 rounded-2xl border border-border bg-white p-4 shadow-card">
             <p className="text-xs font-medium text-muted-foreground">Workspace rhythm</p>
